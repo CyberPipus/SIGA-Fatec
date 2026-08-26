@@ -5,7 +5,6 @@ public class Main{
 
     public static void main(String[] args){
         System.out.println("=== SIGA - Sistema de Gestão Acadêmica Simplificado ===");
-        System.out.println("Versão INICIAL (a ser refatorada na Aula 1)\n");
 
         // Criação de um aluno.
         Aluno a1 = new Aluno("Maria Silva", "2026001", 8.5, true);
@@ -25,13 +24,13 @@ public class Main{
 
         imprimirAluno(a1);
         imprimirAluno(a2);
-
+        // Criação de professores
         Professor p1=new Professor("Ana Pereira", "SP12345", true);
         Professor p2=new Professor("Carlos Oliveira", "SP54321", false);
 
         imprimirProfessor(p1);
         imprimirProfessor(p2);
-
+        // Criação de uma turma
         Turma t1=new Turma("T01", "Programação II");
         t1.adicionarAluno(a1);
         t1.adicionarAluno(a2);
@@ -39,7 +38,7 @@ public class Main{
         try{
             t1.adicionarAluno(a1);
         } catch (IllegalArgumentException e) {
-            System.out.println("Recusado a adição do aluno à turma: " + e.getMessage());
+            System.out.println("Recusada a adição do aluno à turma: " + e.getMessage());
         }
 
         imprimirTurma(t1);
@@ -51,9 +50,6 @@ public class Main{
         listaExterna.clear();
 
         System.out.println("Alunos depois da tentativa: " + t1.getNumeroDeAlunos());
-
-        System.out.println("\nObserve que o programa aceitou médias inválidas (-5 e 15).");
-        System.out.println("Sua tarefa na Aula 1 é refatorar este código para impedir isso.");
     }
 
     // Método utilitário para exibir os dados de um aluno.
