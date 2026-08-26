@@ -21,7 +21,7 @@ public class Main{
         try{
             a2.setMedia(-5); // média inválida: não deveria ser permitida
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro ao definir média do aluno " + a2.getNome() + ": " + e.getMessage());
+            System.out.println("Recusada a definição da média do aluno " + a2.getNome() + ": " + e.getMessage());
         }
 
         // PROBLEMA 2: o estado interno pode ser alterado por qualquer código,
@@ -30,7 +30,7 @@ public class Main{
         try{
             a1.setMedia(15); // média inválida: não deveria ser permitida
         } catch (IllegalArgumentException e){
-            System.out.println("Erro ao definir média do aluno "+a1.getNome()+": "+e.getMessage());
+            System.out.println("Recusada a definição da média do aluno "+a1.getNome()+": "+e.getMessage());
         }
 
         imprimirAluno(a1);
@@ -41,6 +41,17 @@ public class Main{
 
         imprimirProfessor(p1);
         imprimirProfessor(p2);
+
+        Turma t1=new Turma("T01", "Programação II");
+        t1.adicionarAluno(a1);
+        t1.adicionarAluno(a2);
+        try{
+            t1.adicionarAluno(a1); // Tentativa de adicionar o mesmo aluno novamente
+        } catch (IllegalArgumentException e) {
+            System.out.println("Recusado a adição do aluno à turma: " + e.getMessage());
+        }
+
+        imprimirTurma(t1);
 
         System.out.println("\nObserve que o programa aceitou médias inválidas (-5 e 15).");
         System.out.println("Sua tarefa na Aula 1 é refatorar este código para impedir isso.");
@@ -55,5 +66,18 @@ public class Main{
     private static void imprimirProfessor(Professor professor){
         System.out.println("Professor: "+professor.getNome()+" (SIAPE: "+professor.getSiape()+")");
         System.out.println("Ativo: "+(professor.isAtivo()? "Sim" : "Não"));
+    }
+
+    private static void imprimirTurma(Turma turma){
+        System.out.println("Turma: "+turma.getNome()+" (Código: "+turma.getCodigo()+")");
+        if(turma.getNumeroDeAlunos() == 0){
+            System.out.println("Nenhum aluno matriculado.");
+        } else {
+            System.out.println("Número de alunos: "+turma.getNumeroDeAlunos());
+            System.out.println("Alunos matriculados:");
+            for(Aluno aluno : turma.getAlunos()){
+                System.out.println("- "+aluno.getNome()+" (Matrícula: "+aluno.getMatricula()+")");
+        }
+        }
     }
 }
