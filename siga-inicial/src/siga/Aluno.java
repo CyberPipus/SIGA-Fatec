@@ -31,9 +31,15 @@ public class Aluno {
         this.nome = nome;
     }
     public void setMatricula(String matricula) {
+        if (matricula == null || matricula.isEmpty()) {
+            throw new IllegalArgumentException("Matrícula não pode ser nula ou vazia.");
+        }
         this.matricula = matricula;
     }
     public void setMedia(double media) {
+        if (media < 0 || media > 10) {
+            throw new IllegalArgumentException("Média deve estar entre 0 e 10.");
+        }
         this.media = media;
     }
     public void setAtivo(boolean ativo) {
