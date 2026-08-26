@@ -6,9 +6,9 @@ package siga;
  * Esta classe demonstra os problemas do código atual, que servirão de
  * ponto de partida para a atividade prática da Aula 1.
  */
-public class Main {
+public class Main{
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         System.out.println("=== SIGA - Sistema de Gestão Acadêmica Simplificado ===");
         System.out.println("Versão INICIAL (a ser refatorada na Aula 1)\n");
 
@@ -17,7 +17,7 @@ public class Main {
 
         // PROBLEMA 1: nada impede um estado inválido.
         // A linha abaixo atribui uma média impossível, e o objeto aceita.
-        Aluno a2 = new Aluno("João Souza", "2026002", 5, true); // média inválida: não deveria ser permitida
+        Aluno a2=new Aluno("João Souza", "2026002", 5, true); // média inválida: não deveria ser permitida
         try{
             a2.setMedia(-5); // média inválida: não deveria ser permitida
         } catch (IllegalArgumentException e) {
@@ -29,17 +29,17 @@ public class Main {
         // média maior que 10: também deveria ser impedida
         try{
             a1.setMedia(15); // média inválida: não deveria ser permitida
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro ao definir média do aluno " + a1.getNome() + ": " + e.getMessage());
+        } catch (IllegalArgumentException e){
+            System.out.println("Erro ao definir média do aluno "+a1.getNome()+": "+e.getMessage());
         }
 
         imprimirAluno(a1);
         imprimirAluno(a2);
 
-        Professor p1 = new Professor();
-        p1.nome = "Ana Pereira";
-        p1.siape = "SP12345";
-        p1.ativo = true;
+        Professor p1=new Professor();
+        p1.nome="Ana Pereira";
+        p1.siape="SP12345";
+        p1.ativo=true;
         System.out.println("Professor: " + p1.nome + " (SIAPE " + p1.siape + ")");
 
         System.out.println("\nObserve que o programa aceitou médias inválidas (-5 e 15).");
@@ -47,8 +47,8 @@ public class Main {
     }
 
     // Método utilitário para exibir os dados de um aluno.
-    private static void imprimirAluno(Aluno aluno) {
-        System.out.println("Aluno: " + aluno.getNome() + " (Matrícula: " + aluno.getMatricula() + ")");
-        System.out.println("Média: " + aluno.getMedia() + " - Ativo: " + (aluno.isAtivo() ? "Sim" : "Não"));
+    private static void imprimirAluno(Aluno aluno){
+        System.out.println("Aluno: "+aluno.getNome()+" (Matrícula: "+aluno.getMatricula()+")");
+        System.out.println("Média: "+aluno.getMedia()+" - Ativo: "+(aluno.isAtivo()? "Sim" : "Não"));
     }
 }

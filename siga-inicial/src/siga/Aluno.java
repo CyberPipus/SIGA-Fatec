@@ -62,9 +62,9 @@ public class Aluno {
     // Sem construtor: o objeto pode ser criado em estado incompleto/inconsistente.
     // Construtor "Aluno" que inicializa os atributos da classe.
     public Aluno(String nome, String matricula, double media, boolean ativo) {
-        this.nome = nome;
-        this.matricula = matricula;
-        this.media = media;
-        this.ativo = ativo;
+        setNome(nome);
+        setMatricula(matricula);
+        setMedia(media);
+        setAtivo(ativo);
     }
 }
