@@ -36,11 +36,11 @@ public class Main{
         imprimirAluno(a1);
         imprimirAluno(a2);
 
-        Professor p1=new Professor();
-        p1.nome="Ana Pereira";
-        p1.siape="SP12345";
-        p1.ativo=true;
-        System.out.println("Professor: " + p1.nome + " (SIAPE " + p1.siape + ")");
+        Professor p1=new Professor("Ana Pereira", "SP12345", true);
+        Professor p2=new Professor("Carlos Oliveira", "SP54321", false);
+
+        imprimirProfessor(p1);
+        imprimirProfessor(p2);
 
         System.out.println("\nObserve que o programa aceitou médias inválidas (-5 e 15).");
         System.out.println("Sua tarefa na Aula 1 é refatorar este código para impedir isso.");
@@ -50,5 +50,10 @@ public class Main{
     private static void imprimirAluno(Aluno aluno){
         System.out.println("Aluno: "+aluno.getNome()+" (Matrícula: "+aluno.getMatricula()+")");
         System.out.println("Média: "+aluno.getMedia()+" - Ativo: "+(aluno.isAtivo()? "Sim" : "Não"));
+    }
+
+    private static void imprimirProfessor(Professor professor){
+        System.out.println("Professor: "+professor.getNome()+" (SIAPE: "+professor.getSiape()+")");
+        System.out.println("Ativo: "+(professor.isAtivo()? "Sim" : "Não"));
     }
 }
