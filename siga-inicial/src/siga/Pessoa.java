@@ -1,5 +1,5 @@
 package siga;
-
+// Definição de uma classe abstrata para que não existam "Pessoas" sem identificadores dentro do sistema.
 public abstract class Pessoa {
     private String nome;
     private boolean ativo;

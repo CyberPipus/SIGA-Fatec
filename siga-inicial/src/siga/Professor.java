@@ -1,20 +1,15 @@
 package siga;
 
-/**
- * Código INICIAL da disciplina.
- *
- * Observe que Aluno e Professor repetem os atributos "nome" e "matricula"/"registro".
- * Na atividade da Aula 1, essa duplicação será eliminada com a criação de uma
- * superclasse comum (Pessoa), aplicando herança.
- */
+/*
+* A superclasse Pessoa permite que herdemos atributos com "setters" e "getters" pré-definidos por ela mesma.
+* Basta identificá-los com super() e expressar que esta é uma subclasse dela com "... extends Pessoa {}".
+* O mesmo é observado na agora sublcasse Aluno.
+*/
 public class Professor extends Pessoa {
-
-    // Atributos públicos: mesma violação de encapsulamento da classe Aluno.
     // Atributos privados: encapsulamento adequado.
     private String siape;
 
     public Professor(String nome, String siape, boolean ativo) {
-        // Construtor vazio: o objeto pode ser criado em estado incompleto/inconsistente.
         super(nome, ativo);
         setSiape(siape);
     }

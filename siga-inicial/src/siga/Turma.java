@@ -2,7 +2,7 @@ package siga;
 
 import java.util.List;
 import java.util.ArrayList;
-
+// Eis aqui uma classe dependente de Aluno mas porque precisa de objetos dela para comporem os seus.
 public class Turma {
     private String codigo;
     private String nome;
@@ -27,7 +27,7 @@ public class Turma {
     }
 
     public List<Aluno> getAlunos() {
-        return new ArrayList<>(alunos); // Retorna uma cópia da lista para evitar modificação externa
+        return new ArrayList<>(alunos); // Retorna uma cópia da lista para evitar modificação externa.
     }
 
     public String getCodigo() {
