@@ -14,18 +14,15 @@ public class Main {
 
         // Criação de um aluno. Como não há construtor, preenchemos campo a campo.
         Aluno a1 = new Aluno("Maria Silva", "2026001", 8.5, true);
-        a1.nome = "Maria Silva";
-        a1.matricula = "2026001";
-        a1.media = 8.5;
-        a1.ativo = true;
 
         // PROBLEMA 1: nada impede um estado inválido.
         // A linha abaixo atribui uma média impossível, e o objeto aceita.
-        Aluno a2 = new Aluno();
-        a2.nome = "João Souza";
-        a2.matricula = "2026002";
-        a2.media = -5;      // média inválida: não deveria ser permitida
-        a2.ativo = true;
+        Aluno a2 = new Aluno("João Souza", "2026002", 5, true); // média inválida: não deveria ser permitida
+        try{
+            a2.setMedia(-5); // média inválida: não deveria ser permitida
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao definir média do aluno " + a2.getNome() + ": " + e.getMessage());
+        }
 
         // PROBLEMA 2: o estado interno pode ser alterado por qualquer código,
         // sem nenhuma validação ou controle.
