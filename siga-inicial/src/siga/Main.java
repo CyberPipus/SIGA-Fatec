@@ -1,5 +1,6 @@
 package siga;
 
+import java.util.List;
 public class Main{
 
     public static void main(String[] args){
@@ -43,6 +44,14 @@ public class Main{
 
         imprimirTurma(t1);
 
+        System.out.println("Alunos antes da tentativa: " + t1.getNumeroDeAlunos());
+
+        // Um código externo pega a lista e tenta esvaziá-la.
+        List<Aluno>listaExterna = t1.getAlunos();
+        listaExterna.clear();
+
+        System.out.println("Alunos depois da tentativa: " + t1.getNumeroDeAlunos());
+
         System.out.println("\nObserve que o programa aceitou médias inválidas (-5 e 15).");
         System.out.println("Sua tarefa na Aula 1 é refatorar este código para impedir isso.");
     }
@@ -67,7 +76,7 @@ public class Main{
             System.out.println("Alunos matriculados:");
             for(Aluno aluno : turma.getAlunos()){
                 System.out.println("- "+aluno.getNome()+" (Matrícula: "+aluno.getMatricula()+")");
-        }
+            }
         }
     }
 }
