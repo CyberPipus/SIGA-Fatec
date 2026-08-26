@@ -28,22 +28,22 @@ public class Aluno {
 
     // Métodos de acesso (getters e setters) para os atributos privados.
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome=nome;
     }
     public void setMatricula(String matricula) {
-        if (matricula == null || matricula.isEmpty()) {
+        if (matricula==null || matricula.isEmpty()) {
             throw new IllegalArgumentException("Matrícula não pode ser nula ou vazia.");
         }
         this.matricula = matricula;
     }
     public void setMedia(double media) {
-        if (media < 0 || media > 10) {
+        if (media<0 || media>10) {
             throw new IllegalArgumentException("Média deve estar entre 0 e 10.");
         }
-        this.media = media;
+        this.media=media;
     }
     public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+        this.ativo=ativo;
     }
 
     public String getNome() {
