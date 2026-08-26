@@ -1,34 +1,23 @@
 package siga;
 
-/**
- * Ponto de entrada do SIGA (código INICIAL).
- *
- * Esta classe demonstra os problemas do código atual, que servirão de
- * ponto de partida para a atividade prática da Aula 1.
- */
 public class Main{
 
     public static void main(String[] args){
         System.out.println("=== SIGA - Sistema de Gestão Acadêmica Simplificado ===");
         System.out.println("Versão INICIAL (a ser refatorada na Aula 1)\n");
 
-        // Criação de um aluno. Como não há construtor, preenchemos campo a campo.
+        // Criação de um aluno.
         Aluno a1 = new Aluno("Maria Silva", "2026001", 8.5, true);
-
-        // PROBLEMA 1: nada impede um estado inválido.
-        // A linha abaixo atribui uma média impossível, e o objeto aceita.
-        Aluno a2=new Aluno("João Souza", "2026002", 5, true); // média inválida: não deveria ser permitida
+        Aluno a2=new Aluno("João Souza", "2026002", 5, true);
+        //Exemplo de tentativa de definir uma média inválida inferior a 0 para o aluno a2.
         try{
-            a2.setMedia(-5); // média inválida: não deveria ser permitida
+            a2.setMedia(-5); // Média inválida: não deveria ser permitida
         } catch (IllegalArgumentException e) {
             System.out.println("Recusada a definição da média do aluno " + a2.getNome() + ": " + e.getMessage());
         }
-
-        // PROBLEMA 2: o estado interno pode ser alterado por qualquer código,
-        // sem nenhuma validação ou controle.
-        // média maior que 10: também deveria ser impedida
+        //Exemplo de tentativa de definir uma média inválida superior a 10 para o aluno a1.
         try{
-            a1.setMedia(15); // média inválida: não deveria ser permitida
+            a1.setMedia(15); // Média inválida: não deveria ser permitida
         } catch (IllegalArgumentException e){
             System.out.println("Recusada a definição da média do aluno "+a1.getNome()+": "+e.getMessage());
         }
@@ -45,8 +34,9 @@ public class Main{
         Turma t1=new Turma("T01", "Programação II");
         t1.adicionarAluno(a1);
         t1.adicionarAluno(a2);
+        //Tentativa de adicionar o mesmo aluno novamente à turma, o que deve ser recusado.
         try{
-            t1.adicionarAluno(a1); // Tentativa de adicionar o mesmo aluno novamente
+            t1.adicionarAluno(a1);
         } catch (IllegalArgumentException e) {
             System.out.println("Recusado a adição do aluno à turma: " + e.getMessage());
         }
@@ -62,12 +52,12 @@ public class Main{
         System.out.println("Aluno: "+aluno.getNome()+" (Matrícula: "+aluno.getMatricula()+")");
         System.out.println("Média: "+aluno.getMedia()+" - Ativo: "+(aluno.isAtivo()? "Sim" : "Não"));
     }
-
+    // Método utilitário para exibir os dados de um professor.
     private static void imprimirProfessor(Professor professor){
         System.out.println("Professor: "+professor.getNome()+" (SIAPE: "+professor.getSiape()+")");
         System.out.println("Ativo: "+(professor.isAtivo()? "Sim" : "Não"));
     }
-
+    // Método utilitário para exibir os dados de uma turma e seus alunos.
     private static void imprimirTurma(Turma turma){
         System.out.println("Turma: "+turma.getNome()+" (Código: "+turma.getCodigo()+")");
         if(turma.getNumeroDeAlunos() == 0){
