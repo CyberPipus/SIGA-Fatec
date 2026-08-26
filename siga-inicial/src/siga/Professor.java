@@ -10,6 +10,7 @@ package siga;
 public class Professor extends Pessoa {
 
     // Atributos públicos: mesma violação de encapsulamento da classe Aluno.
+    // Atributos privados: encapsulamento adequado.
     private String siape;
 
     public Professor(String nome, String siape, boolean ativo) {
