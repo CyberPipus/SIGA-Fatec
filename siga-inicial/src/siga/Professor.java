@@ -7,10 +7,25 @@ package siga;
  * Na atividade da Aula 1, essa duplicação será eliminada com a criação de uma
  * superclasse comum (Pessoa), aplicando herança.
  */
-public class Professor {
+public class Professor extends Pessoa {
 
     // Atributos públicos: mesma violação de encapsulamento da classe Aluno.
-    public String nome;
-    public String siape;
-    public boolean ativo;
+    private String siape;
+
+    public Professor(String nome, String siape, boolean ativo) {
+        // Construtor vazio: o objeto pode ser criado em estado incompleto/inconsistente.
+        super(nome, ativo);
+        setSiape(siape);
+    }
+    
+    public void setSiape(String siape) {
+        if (siape==null || siape.isBlank()) {
+            throw new IllegalArgumentException("SIAPE não pode ser nulo ou vazio.");
+        }
+        this.siape = siape;
+    }
+
+    public String getSiape() {
+        return siape;
+    }
 }
