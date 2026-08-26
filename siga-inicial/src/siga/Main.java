@@ -26,7 +26,12 @@ public class Main {
 
         // PROBLEMA 2: o estado interno pode ser alterado por qualquer código,
         // sem nenhuma validação ou controle.
-        a1.media = 15;      // média maior que 10: também deveria ser impedida
+        // média maior que 10: também deveria ser impedida
+        try{
+            a1.setMedia(15); // média inválida: não deveria ser permitida
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao definir média do aluno " + a1.getNome() + ": " + e.getMessage());
+        }
 
         imprimirAluno(a1);
         imprimirAluno(a2);
@@ -43,9 +48,7 @@ public class Main {
 
     // Método utilitário para exibir os dados de um aluno.
     private static void imprimirAluno(Aluno aluno) {
-        System.out.println("Aluno: " + aluno.nome
-                + " | Matrícula: " + aluno.matricula
-                + " | Média: " + aluno.media
-                + " | Ativo: " + (aluno.ativo ? "sim" : "não"));
+        System.out.println("Aluno: " + aluno.getNome() + " (Matrícula: " + aluno.getMatricula() + ")");
+        System.out.println("Média: " + aluno.getMedia() + " - Ativo: " + (aluno.isAtivo() ? "Sim" : "Não"));
     }
 }
